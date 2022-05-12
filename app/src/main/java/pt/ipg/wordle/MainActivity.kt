@@ -2046,6 +2046,56 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        when(tentativas){
+            1 -> {
+                pos11.text = word.text[0].toString()
+                pos12.text = word.text[1].toString()
+                pos13.text = word.text[2].toString()
+                pos14.text = word.text[3].toString()
+                pos15.text = word.text[4].toString()
+                tentativas++
+            }
+            2 -> {
+                pos21.text = word.text[0].toString()
+                pos22.text = word.text[1].toString()
+                pos23.text = word.text[2].toString()
+                pos24.text = word.text[3].toString()
+                pos25.text = word.text[4].toString()
+                tentativas++
+            }
+            3 -> {
+                pos31.text = word.text[0].toString()
+                pos32.text = word.text[1].toString()
+                pos33.text = word.text[2].toString()
+                pos34.text = word.text[3].toString()
+                pos35.text = word.text[4].toString()
+                tentativas++
+            }
+            4 -> {
+                pos41.text = word.text[0].toString()
+                pos42.text = word.text[1].toString()
+                pos43.text = word.text[2].toString()
+                pos44.text = word.text[3].toString()
+                pos45.text = word.text[4].toString()
+                tentativas++
+            }
+            5 -> {
+                pos51.text = word.text[0].toString()
+                pos52.text = word.text[1].toString()
+                pos53.text = word.text[2].toString()
+                pos54.text = word.text[3].toString()
+                pos55.text = word.text[4].toString()
+                tentativas++
+            }
+            6 -> {
+                pos61.text = word.text[0].toString()
+                pos62.text = word.text[1].toString()
+                pos63.text = word.text[2].toString()
+                pos64.text = word.text[3].toString()
+                pos65.text = word.text[4].toString()
+                tentativas++
+            }
+        }
     }
 
     private fun clear(){
