@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wordle</string>
+    <string name="submit">SUBMIT</string>
 </resources>
