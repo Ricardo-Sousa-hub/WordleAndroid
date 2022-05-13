@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.isDigitsOnly
-import org.w3c.dom.Text
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -2089,6 +2088,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun verificarFimDeJogo(){
+        TODO("Por fazer")
+    }
+
     private fun submit(){
 
         if(tentativas <= 6) {
@@ -2108,61 +2111,61 @@ class MainActivity : AppCompatActivity() {
 
             when (tentativas) {
                 1 -> {
-                    pos11!!.text = palavra[0].toString()
-                    pos12!!.text = palavra[1].toString()
-                    pos13!!.text = palavra[2].toString()
-                    pos14!!.text = palavra[3].toString()
-                    pos15!!.text = palavra[4].toString()
+                    pos11!!.text = palavra[0].toString().uppercase()
+                    pos12!!.text = palavra[1].toString().uppercase()
+                    pos13!!.text = palavra[2].toString().uppercase()
+                    pos14!!.text = palavra[3].toString().uppercase()
+                    pos15!!.text = palavra[4].toString().uppercase()
                     posA(pos11!!, pos12!!, pos13!!, pos14!!, pos15!!)
                     verificarInput()
                     tentativas++
                 }
                 2 -> {
-                    pos21!!.text = palavra[0].toString()
-                    pos22!!.text = palavra[1].toString()
-                    pos23!!.text = palavra[2].toString()
-                    pos24!!.text = palavra[3].toString()
-                    pos25!!.text = palavra[4].toString()
+                    pos21!!.text = palavra[0].toString().uppercase()
+                    pos22!!.text = palavra[1].toString().uppercase()
+                    pos23!!.text = palavra[2].toString().uppercase()
+                    pos24!!.text = palavra[3].toString().uppercase()
+                    pos25!!.text = palavra[4].toString().uppercase()
                     posA(pos21!!, pos22!!, pos23!!, pos24!!, pos25!!)
                     verificarInput()
                     tentativas++
                 }
                 3 -> {
-                    pos31!!.text = palavra[0].toString()
-                    pos32!!.text = palavra[1].toString()
-                    pos33!!.text = palavra[2].toString()
-                    pos34!!.text = palavra[3].toString()
-                    pos35!!.text = palavra[4].toString()
+                    pos31!!.text = palavra[0].toString().uppercase()
+                    pos32!!.text = palavra[1].toString().uppercase()
+                    pos33!!.text = palavra[2].toString().uppercase()
+                    pos34!!.text = palavra[3].toString().uppercase()
+                    pos35!!.text = palavra[4].toString().uppercase()
                     posA(pos31!!, pos32!!, pos33!!, pos34!!, pos35!!)
                     verificarInput()
                     tentativas++
                 }
                 4 -> {
-                    pos41!!.text = palavra[0].toString()
-                    pos42!!.text = palavra[1].toString()
-                    pos43!!.text = palavra[2].toString()
-                    pos44!!.text = palavra[3].toString()
-                    pos45!!.text = palavra[4].toString()
+                    pos41!!.text = palavra[0].toString().uppercase()
+                    pos42!!.text = palavra[1].toString().uppercase()
+                    pos43!!.text = palavra[2].toString().uppercase()
+                    pos44!!.text = palavra[3].toString().uppercase()
+                    pos45!!.text = palavra[4].toString().uppercase()
                     posA(pos41!!, pos42!!, pos43!!, pos44!!, pos45!!)
                     verificarInput()
                     tentativas++
                 }
                 5 -> {
-                    pos51!!.text = palavra[0].toString()
-                    pos52!!.text = palavra[1].toString()
-                    pos53!!.text = palavra[2].toString()
-                    pos54!!.text = palavra[3].toString()
-                    pos55!!.text = palavra[4].toString()
+                    pos51!!.text = palavra[0].toString().uppercase()
+                    pos52!!.text = palavra[1].toString().uppercase()
+                    pos53!!.text = palavra[2].toString().uppercase()
+                    pos54!!.text = palavra[3].toString().uppercase()
+                    pos55!!.text = palavra[4].toString().uppercase()
                     posA(pos51!!, pos52!!, pos53!!, pos54!!, pos55!!)
                     verificarInput()
                     tentativas++
                 }
                 6 -> {
-                    pos61!!.text = palavra[0].toString()
-                    pos62!!.text = palavra[1].toString()
-                    pos63!!.text = palavra[2].toString()
-                    pos64!!.text = palavra[3].toString()
-                    pos65!!.text = palavra[4].toString()
+                    pos61!!.text = palavra[0].toString().uppercase()
+                    pos62!!.text = palavra[1].toString().uppercase()
+                    pos63!!.text = palavra[2].toString().uppercase()
+                    pos64!!.text = palavra[3].toString().uppercase()
+                    pos65!!.text = palavra[4].toString().uppercase()
                     posA(pos61!!, pos62!!, pos63!!, pos64!!, pos65!!)
                     verificarInput()
                     tentativas++
@@ -2172,6 +2175,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
 
     private fun endGame(){
         val dialogoAlerta = AlertDialog.Builder(this)
