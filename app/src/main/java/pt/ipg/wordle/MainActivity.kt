@@ -1,10 +1,13 @@
 package pt.ipg.wordle
 
+import android.content.DialogInterface
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.text.isDigitsOnly
 import org.w3c.dom.Text
 import kotlin.random.Random
@@ -1970,53 +1973,105 @@ class MainActivity : AppCompatActivity() {
 
         "árdua")
 
-    val random = Random(System.currentTimeMillis())
+    private val random = Random(System.currentTimeMillis())
 
-    var pos11 = findViewById<TextView>(R.id.textView11)
-    var pos12 = findViewById<TextView>(R.id.textView12)
-    var pos13 = findViewById<TextView>(R.id.textView13)
-    var pos14 = findViewById<TextView>(R.id.textView14)
-    var pos15 = findViewById<TextView>(R.id.textView15)
+    private var pos11:TextView? = null
+    private var pos12:TextView? = null
+    private var pos13:TextView? = null
+    private var pos14:TextView? = null
+    private var pos15:TextView? = null
 
-    var pos21 = findViewById<TextView>(R.id.textView21)
-    var pos22 = findViewById<TextView>(R.id.textView22)
-    var pos23 = findViewById<TextView>(R.id.textView23)
-    var pos24 = findViewById<TextView>(R.id.textView24)
-    var pos25 = findViewById<TextView>(R.id.textView25)
+    private var pos21:TextView? = null
+    private var pos22:TextView? = null
+    private var pos23:TextView? = null
+    private var pos24:TextView? = null
+    private var pos25:TextView? = null
 
-    var pos31 = findViewById<TextView>(R.id.textView31)
-    var pos32 = findViewById<TextView>(R.id.textView32)
-    var pos33 = findViewById<TextView>(R.id.textView33)
-    var pos34 = findViewById<TextView>(R.id.textView34)
-    var pos35 = findViewById<TextView>(R.id.textView35)
+    private var pos31:TextView? = null
+    private var pos32:TextView? = null
+    private var pos33:TextView? = null
+    private var pos34:TextView? = null
+    private var pos35:TextView? = null
 
-    var pos41 = findViewById<TextView>(R.id.textView41)
-    var pos42 = findViewById<TextView>(R.id.textView42)
-    var pos43 = findViewById<TextView>(R.id.textView43)
-    var pos44 = findViewById<TextView>(R.id.textView44)
-    var pos45 = findViewById<TextView>(R.id.textView45)
+    private var pos41:TextView? = null
+    private var pos42:TextView? = null
+    private var pos43:TextView? = null
+    private var pos44:TextView? = null
+    private var pos45:TextView? = null
 
-    var pos51 = findViewById<TextView>(R.id.textView51)
-    var pos52 = findViewById<TextView>(R.id.textView52)
-    var pos53 = findViewById<TextView>(R.id.textView53)
-    var pos54 = findViewById<TextView>(R.id.textView54)
-    var pos55 = findViewById<TextView>(R.id.textView55)
+    private var pos51:TextView? = null
+    private var pos52:TextView? = null
+    private var pos53:TextView? = null
+    private var pos54:TextView? = null
+    private var pos55:TextView? = null
 
-    var pos61 = findViewById<TextView>(R.id.textView61)
-    var pos62 = findViewById<TextView>(R.id.textView62)
-    var pos63 = findViewById<TextView>(R.id.textView63)
-    var pos64 = findViewById<TextView>(R.id.textView64)
-    var pos65 = findViewById<TextView>(R.id.textView65)
+    private var pos61:TextView? = null
+    private var pos62:TextView? = null
+    private var pos63:TextView? = null
+    private var pos64:TextView? = null
+    private var pos65:TextView? = null
 
-    var word = findViewById<EditText>(R.id.editTextWord)
+    private var posA1:TextView? = null
+    private var posA2:TextView? = null
+    private var posA3:TextView? = null
+    private var posA4:TextView? = null
+    private var posA5:TextView? = null
 
-    var tentativas = 1
+    private var solve:TextView? = null
 
-    var palavraAdivinhar = ""
+    private var word:EditText? = null
+
+    private var tentativas = 1
+
+    private var palavraAdivinhar = ""
+
+    private var palavra = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        pos11 = findViewById<TextView>(R.id.textView11)
+        pos12 = findViewById<TextView>(R.id.textView12)
+        pos13 = findViewById<TextView>(R.id.textView13)
+        pos14 = findViewById<TextView>(R.id.textView14)
+        pos15 = findViewById<TextView>(R.id.textView15)
+
+        pos21 = findViewById<TextView>(R.id.textView21)
+        pos22 = findViewById<TextView>(R.id.textView22)
+        pos23 = findViewById<TextView>(R.id.textView23)
+        pos24 = findViewById<TextView>(R.id.textView24)
+        pos25 = findViewById<TextView>(R.id.textView25)
+
+        pos31 = findViewById<TextView>(R.id.textView31)
+        pos32 = findViewById<TextView>(R.id.textView32)
+        pos33 = findViewById<TextView>(R.id.textView33)
+        pos34 = findViewById<TextView>(R.id.textView34)
+        pos35 = findViewById<TextView>(R.id.textView35)
+
+        pos41 = findViewById<TextView>(R.id.textView41)
+        pos42 = findViewById<TextView>(R.id.textView42)
+        pos43 = findViewById<TextView>(R.id.textView43)
+        pos44 = findViewById<TextView>(R.id.textView44)
+        pos45 = findViewById<TextView>(R.id.textView45)
+
+        pos51 = findViewById<TextView>(R.id.textView51)
+        pos52 = findViewById<TextView>(R.id.textView52)
+        pos53 = findViewById<TextView>(R.id.textView53)
+        pos54 = findViewById<TextView>(R.id.textView54)
+        pos55 = findViewById<TextView>(R.id.textView55)
+
+        pos61 = findViewById<TextView>(R.id.textView61)
+        pos62 = findViewById<TextView>(R.id.textView62)
+        pos63 = findViewById<TextView>(R.id.textView63)
+        pos64 = findViewById<TextView>(R.id.textView64)
+        pos65 = findViewById<TextView>(R.id.textView65)
+
+        word = findViewById<EditText>(R.id.editTextWord)
+
+        solve = findViewById<TextView>(R.id.textViewSolve)
+
+        novoJogo()
 
         findViewById<Button>(R.id.buttonSubmit).setOnClickListener { submit() }
     }
@@ -2029,112 +2084,179 @@ class MainActivity : AppCompatActivity() {
         clear()
 
         palavraAdivinhar = palavras.get(index)
-
+        solve!!.text = palavraAdivinhar
+        palavraAdivinhar += " "
 
     }
 
     private fun submit(){
 
-        if(word.text.toString().length < 5 || word.text.toString().length > 5){
-            word.error = "A palavra tem de ter 5 letras"
-            word.requestFocus()
-            return
-        }
-        if(!word.text.toString().isDigitsOnly() || word.text.toString().isBlank()){
-            word.error = "É uma palavra seu analfabeto"
-            word.requestFocus()
-            return
+        if(tentativas <= 6) {
+            if (word!!.text.toString().isDigitsOnly() || word!!.text.toString().isBlank()) {
+                word!!.error = "É uma palavra seu analfabeto"
+                word!!.requestFocus()
+                return
+            }
+
+            if (word!!.text.toString().length < 5 || word!!.text.toString().length > 5) {
+                word!!.error = "A palavra tem de ter 5 letras"
+                word!!.requestFocus()
+                return
+            }
+
+            palavra = word!!.text.toString()+" "
+
+            when (tentativas) {
+                1 -> {
+                    pos11!!.text = palavra[0].toString()
+                    pos12!!.text = palavra[1].toString()
+                    pos13!!.text = palavra[2].toString()
+                    pos14!!.text = palavra[3].toString()
+                    pos15!!.text = palavra[4].toString()
+                    posA(pos11!!, pos12!!, pos13!!, pos14!!, pos15!!)
+                    verificarInput()
+                    tentativas++
+                }
+                2 -> {
+                    pos21!!.text = palavra[0].toString()
+                    pos22!!.text = palavra[1].toString()
+                    pos23!!.text = palavra[2].toString()
+                    pos24!!.text = palavra[3].toString()
+                    pos25!!.text = palavra[4].toString()
+                    posA(pos21!!, pos22!!, pos23!!, pos24!!, pos25!!)
+                    verificarInput()
+                    tentativas++
+                }
+                3 -> {
+                    pos31!!.text = palavra[0].toString()
+                    pos32!!.text = palavra[1].toString()
+                    pos33!!.text = palavra[2].toString()
+                    pos34!!.text = palavra[3].toString()
+                    pos35!!.text = palavra[4].toString()
+                    posA(pos31!!, pos32!!, pos33!!, pos34!!, pos35!!)
+                    verificarInput()
+                    tentativas++
+                }
+                4 -> {
+                    pos41!!.text = palavra[0].toString()
+                    pos42!!.text = palavra[1].toString()
+                    pos43!!.text = palavra[2].toString()
+                    pos44!!.text = palavra[3].toString()
+                    pos45!!.text = palavra[4].toString()
+                    posA(pos41!!, pos42!!, pos43!!, pos44!!, pos45!!)
+                    verificarInput()
+                    tentativas++
+                }
+                5 -> {
+                    pos51!!.text = palavra[0].toString()
+                    pos52!!.text = palavra[1].toString()
+                    pos53!!.text = palavra[2].toString()
+                    pos54!!.text = palavra[3].toString()
+                    pos55!!.text = palavra[4].toString()
+                    posA(pos51!!, pos52!!, pos53!!, pos54!!, pos55!!)
+                    verificarInput()
+                    tentativas++
+                }
+                6 -> {
+                    pos61!!.text = palavra[0].toString()
+                    pos62!!.text = palavra[1].toString()
+                    pos63!!.text = palavra[2].toString()
+                    pos64!!.text = palavra[3].toString()
+                    pos65!!.text = palavra[4].toString()
+                    posA(pos61!!, pos62!!, pos63!!, pos64!!, pos65!!)
+                    verificarInput()
+                    tentativas++
+                    endGame()
+                }
+            }
         }
 
-        when(tentativas){
-            1 -> {
-                pos11.text = word.text[0].toString()
-                pos12.text = word.text[1].toString()
-                pos13.text = word.text[2].toString()
-                pos14.text = word.text[3].toString()
-                pos15.text = word.text[4].toString()
-                tentativas++
+    }
+
+    private fun endGame(){
+        val dialogoAlerta = AlertDialog.Builder(this)
+        dialogoAlerta.setTitle("Jogar Novamente")
+        dialogoAlerta.setMessage("Quer jogar novamente?")
+        dialogoAlerta.setCancelable(false) //Isto diz que a pessoa pode sair do dialogo sem responder ou não
+        dialogoAlerta.setPositiveButton(android.R.string.ok, DialogInterface.OnClickListener{ dialog, wich -> novoJogo()})
+        dialogoAlerta.setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener{ dialog, wich -> finish()})
+
+        dialogoAlerta.show()
+    }
+
+    private fun verificarInput(){
+        for(i in 0..5){
+            for(y in 0..5){
+                if(palavraAdivinhar[y] == palavra[i] && i != y){
+                    when(i){
+                        0 -> posA1!!.setTextColor(Color.parseColor("#ffff00"))
+                        1 -> posA2!!.setTextColor(Color.parseColor("#ffff00"))
+                        2 -> posA3!!.setTextColor(Color.parseColor("#ffff00"))
+                        3 -> posA4!!.setTextColor(Color.parseColor("#ffff00"))
+                        4 -> posA5!!.setTextColor(Color.parseColor("#ffff00"))
+                    }
+                }
             }
-            2 -> {
-                pos21.text = word.text[0].toString()
-                pos22.text = word.text[1].toString()
-                pos23.text = word.text[2].toString()
-                pos24.text = word.text[3].toString()
-                pos25.text = word.text[4].toString()
-                tentativas++
-            }
-            3 -> {
-                pos31.text = word.text[0].toString()
-                pos32.text = word.text[1].toString()
-                pos33.text = word.text[2].toString()
-                pos34.text = word.text[3].toString()
-                pos35.text = word.text[4].toString()
-                tentativas++
-            }
-            4 -> {
-                pos41.text = word.text[0].toString()
-                pos42.text = word.text[1].toString()
-                pos43.text = word.text[2].toString()
-                pos44.text = word.text[3].toString()
-                pos45.text = word.text[4].toString()
-                tentativas++
-            }
-            5 -> {
-                pos51.text = word.text[0].toString()
-                pos52.text = word.text[1].toString()
-                pos53.text = word.text[2].toString()
-                pos54.text = word.text[3].toString()
-                pos55.text = word.text[4].toString()
-                tentativas++
-            }
-            6 -> {
-                pos61.text = word.text[0].toString()
-                pos62.text = word.text[1].toString()
-                pos63.text = word.text[2].toString()
-                pos64.text = word.text[3].toString()
-                pos65.text = word.text[4].toString()
-                tentativas++
+        }
+
+        for(i in 0..5){ //Quando coloco 5, ele diz indexOutOfRange
+            if(palavraAdivinhar[i] == palavra[i]){
+                when(i){
+                    0 -> posA1!!.setTextColor(Color.parseColor("#7CFC00"))
+                    1 -> posA2!!.setTextColor(Color.parseColor("#7CFC00"))
+                    2 -> posA3!!.setTextColor(Color.parseColor("#7CFC00"))
+                    3 -> posA4!!.setTextColor(Color.parseColor("#7CFC00"))
+                    4 -> posA5!!.setTextColor(Color.parseColor("#7CFC00"))
+                }
             }
         }
     }
 
+    private fun posA(posX1:TextView, posX2:TextView, posX3:TextView, posX4:TextView, posX5:TextView){
+        posA1 = posX1
+        posA2 = posX2
+        posA3 = posX3
+        posA4 = posX4
+        posA5 = posX5
+    }
+
     private fun clear(){
-        pos11.text = " "
-        pos12.text = " "
-        pos13.text = " "
-        pos14.text = " "
-        pos15.text = " "
+        pos11!!.text = "A"
+        pos12!!.text = "A"
+        pos13!!.text = "A"
+        pos14!!.text = "A"
+        pos15!!.text = "A"
 
-        pos21.text = " "
-        pos22.text = " "
-        pos23.text = " "
-        pos24.text = " "
-        pos25.text = " "
+        pos21!!.text = "A"
+        pos22!!.text = "A"
+        pos23!!.text = "A"
+        pos24!!.text = "A"
+        pos25!!.text = "A"
 
-        pos31.text = " "
-        pos32.text = " "
-        pos33.text = " "
-        pos34.text = " "
-        pos35.text = " "
+        pos31!!.text = "A"
+        pos32!!.text = "A"
+        pos33!!.text = "A"
+        pos34!!.text = "A"
+        pos35!!.text = "A"
 
-        pos41.text = " "
-        pos42.text = " "
-        pos43.text = " "
-        pos44.text = " "
-        pos45.text = " "
+        pos41!!.text = "A"
+        pos42!!.text = "A"
+        pos43!!.text = "A"
+        pos44!!.text = "A"
+        pos45!!.text = "A"
 
-        pos51.text = " "
-        pos52.text = " "
-        pos53.text = " "
-        pos54.text = " "
-        pos55.text = " "
+        pos51!!.text = "A"
+        pos52!!.text = "A"
+        pos53!!.text = "A"
+        pos54!!.text = "A"
+        pos55!!.text = "A"
 
-        pos61.text = " "
-        pos62.text = " "
-        pos63.text = " "
-        pos64.text = " "
-        pos65.text = " "
+        pos61!!.text = "A"
+        pos62!!.text = "A"
+        pos63!!.text = "A"
+        pos64!!.text = "A"
+        pos65!!.text = "A"
 
-        word.text.clear()
+        word!!.text.clear()
     }
 }
