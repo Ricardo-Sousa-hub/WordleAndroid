@@ -1,4 +1,3 @@
 # WordleAndroid
 
-O wordlee para android.
-Projeto realizado no Android Studio com uso de kotlin.
+A versão do jogo Wordle para android com o uso de Kotlin.
